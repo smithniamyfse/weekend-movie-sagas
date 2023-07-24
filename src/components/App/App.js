@@ -1,10 +1,10 @@
-import ReactDOM from "react-dom/client";
 import { HashRouter as Router, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";
 
 // Importing components
+import Header from "../Header/Header.jsx";
 import MovieList from "../MovieList/MovieList.jsx";
 import MovieDetails from "../MovieDetails/MovieDetails.jsx";
 
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
+        <Header />
       <Router>
         <Route path="/" exact>
           <MovieList />

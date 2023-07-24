@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import MovieItem from "../MovieItem/MovieItem";
+import "./MovieList.css";
 
 function MovieList() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function MovieList() {
 
   return (
     <main>
-      <h1>MovieList</h1>
+      <h1>Movie List</h1>
       <section className="movies">
         <Box sx={{ flexGrow: 1 }}>
           <Grid

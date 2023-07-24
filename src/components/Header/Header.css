@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+.header-container {
+    background-color: #0A0C0D;
+}
+
+.h1-saga {
+    font-size: 3em;
+    font-family: 'Monoton', cursive;
+    margin: 0;
+    color: #C29D1E;
+    font-weight: 200;
+    padding: 0.5em 0em;
+}
+
