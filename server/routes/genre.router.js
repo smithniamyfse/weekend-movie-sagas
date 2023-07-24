@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     .catch((error) => {
         console.log(`Error GETting genres query: ${error}`);
         res.sendStatus(500);
-    });
+    })
 });
 
 module.exports = router;
