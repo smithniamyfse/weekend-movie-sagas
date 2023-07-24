@@ -7,7 +7,7 @@ import "./Header.css";
 function Header() {
   return (
     <div className="header-container">
-      <h1 className="h1-saga">🎬 &nbsp; The Movies Saga!</h1>
+      <h1 className="h1-saga">🎬 &nbsp; The &nbsp; Movies &nbsp; Saga!</h1>
     </div>
   );
 }

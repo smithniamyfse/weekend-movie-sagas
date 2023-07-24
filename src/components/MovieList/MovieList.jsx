@@ -14,8 +14,8 @@ function MovieList() {
   }, [dispatch]);
 
   return (
-    <main>
-      <h1>Movie List</h1>
+    <main className="movie-list-container">
+      <h1 className="h1-movie-list">Movie &nbsp; List</h1>
       <section className="movies">
         <Box sx={{ flexGrow: 1 }}>
           <Grid
