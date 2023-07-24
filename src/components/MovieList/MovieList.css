@@ -1,4 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+.movie-list-container {
+    background-color: #5F6D73;
+    padding: 50px 25px;
+}
+
 .movies {
     display : flex;
     flex-wrap: wrap;
 }
+
+.h1-movie-list {
+    font-size: 2.5em;
+    font-family: 'Monoton', cursive;
+    margin: 0;
+    font-weight: 300;
+    padding-bottom: 50px;
+    color: #0A0C0D;
+}
+
