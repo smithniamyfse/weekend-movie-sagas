@@ -22,15 +22,15 @@ function MovieDetails() {
 
   return (
     <main className="movie-details-container">
-    <Card sx={{ bgcolor: "#0A0C0D" }}>
+    <Card sx={{ bgcolor: "#0A0C0D", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{display: "flex", padding: "25px"}}>
         <CardMedia
           component="img"
-          sx={{ width: "140px", height: "205px", objectFit: "cover" }}
+          sx={{ width: "185px", height: "275px", objectFit: "contain" }}
           image={movieDetails.poster}
           alt={movieDetails.title}
         />
-        <CardContent sx={{ flexGrow: 1 }}>
+        <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center' }}>
           <Typography
             gutterBottom
             variant="h5"
@@ -49,8 +49,8 @@ function MovieDetails() {
             {movieDetails.description}
           </Typography>
           {movieDetails.genres && (
-            <Typography variant="body2" align="center" sx={{ color: "#C29D1E", paddingTop: "10px" }}>
-              {movieDetails.genres.join(', ')}
+            <Typography variant="body2" sx={{ color: "#C29D1E", paddingTop: "10px", fontStyle: "italic" }}>
+              Genres: {movieDetails.genres.join(', ')}
             </Typography>
           )}
         </CardContent>
@@ -69,6 +69,7 @@ function MovieDetails() {
 }
 
 export default MovieDetails;
+
 
 
 
