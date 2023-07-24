@@ -44,7 +44,7 @@ function MovieItem({ movie }) {
         {movie.description.length > 100 && (
           <Typography variant="body2" align="left">
             <Link to={`/details/${movie.id}`}>
-              <Button startIcon={<ReadMoreIcon />} style={{ color: "#C29D1E" }}>
+              <Button size="medium" startIcon={<ReadMoreIcon />} style={{ color: "#C29D1E" }}>
                 Read More
               </Button>
             </Link>
