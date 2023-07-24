@@ -10,8 +10,26 @@ import createSagaMiddleware from "redux-saga";
 import { takeEvery, put } from "redux-saga/effects";
 import axios from "axios";
 
+/*
+Reducer: 🛠️ (a tool that constructs the state of your app)
+Action: 📬 (a message sent to the reducer)
+State: 🏠 (the house that the reducer is building)
+*/
+
+// In your movie app, think of your state as the information or data 
+// about all the movies, the genres, and the movie details. 
+// It's like the inventory of your movie store.
+
 // 👇 We're setting up the saga middleware, it's a middleman that helps manage side effects in our app
 const sagaMiddleware = createSagaMiddleware();
+
+/*
+Reducers 🛠️:
+
+movies - Handles information about all movies in the app.
+genres - Handles information about all genres.
+movieDetails - Handles information about a specific movie's details.
+*/
 
 // 👇 Here we create a reducer function that updates our movie list state when we get new movie data
 const movies = (state = [], action) => {
@@ -42,6 +60,14 @@ const movieDetails = (state = {}, action) => {
       return state;
   }
 };
+
+/*
+Actions 📬:
+
+SET_MOVIES - Tells the movies reducer to update its state with the list of all movies.
+SET_GENRES - Tells the genres reducer to update its state with the list of all genres.
+SET_MOVIE_DETAILS - Tells the movieDetails reducer to update its state with the details of a specific movie.
+*/
 
 // 👇 Here we create functions that get data from our server
 function* fetchGenres() { // 🏷️🔄 Get all genres from server
@@ -78,6 +104,20 @@ function* rootSaga() {
   yield takeEvery("FETCH_MOVIE_DETAILS", fetchMovieDetails); // 👀 If an action to fetch movie details is dispatched, run the fetchMovieDetails function
 }
 
+/*
+Imagine you (the action 📬) want to see the details of a specific movie. 
+You tell the reducer 🛠️ (in this case, movieDetails), "Hey, I want the details for Movie A."
+
+The reducer looks at its current state (maybe it currently has details for Movie B), 
+takes your request, and fetches the details for Movie A from the server (it "buys" the new movie details, if you will).
+
+The reducer then returns this new state (details for Movie A), which is then displayed on your app's UI.
+
+So, your state (🏠 - the movie details displayed on your app) 
+changed based on your action (📬 - your request for a specific movie's details), 
+thanks to the reducer (🛠️ - the function that handles your request and updates the state).
+*/
+
 // 👇 Here we create a store to manage our app's state using the reducers and middleware we defined
 const storeInstance = createStore(
   combineReducers({
@@ -101,120 +141,3 @@ root.render(
   </React.StrictMode>
 );
 
-
-
-
-/*
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./components/App/App.js";
-import { createStore, combineReducers, applyMiddleware } from "redux";
-// Provider allows us to use redux within our react app
-import { Provider } from "react-redux";
-import logger from "redux-logger";
-// Import saga middleware
-import createSagaMiddleware from "redux-saga";
-import { takeEvery, put } from "redux-saga/effects";
-import axios from "axios";
-
-
-// Create sagaMiddleware
-const sagaMiddleware = createSagaMiddleware();
-
-// Redux reducers
-
-// Used to store movies returned from the server
-const movies = (state = [], action) => {
-  switch (action.type) {
-    case "SET_MOVIES":
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-// Used to store the movie genres
-const genres = (state = [], action) => {
-  switch (action.type) {
-    case "SET_GENRES":
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-// Used to store the selected movie details
-const movieDetails = (state = {}, action) => {
-  switch (action.type) {
-    case "SET_MOVIE_DETAILS":
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-// Worker sagas
-
-function* fetchGenres() {
-    try {
-      const genres = yield axios.get("/api/genre");
-      console.log("get all:", genres.data);
-      yield put({ type: "SET_GENRES", payload: genres.data });
-    } catch {
-      console.log("get all genres error");
-    }
-  }
-  
-
-function* fetchAllMovies() {
-  try {
-    const movies = yield axios.get("/api/movie");
-    console.log("get all:", movies.data);
-    yield put({ type: "SET_MOVIES", payload: movies.data });
-  } catch {
-    console.log("get all error");
-  }
-}
-
-function* fetchMovieDetails(action) {
-  try {
-    const response = yield axios.get(`/api/movie/${action.payload}`);
-    console.log("get details:", response.data);
-    yield put({ type: "SET_MOVIE_DETAILS", payload: response.data });
-  } catch {
-    console.log("get details error");
-  }
-}
-
-// rootSaga
-function* rootSaga() {
-  yield takeEvery("FETCH_MOVIES", fetchAllMovies);
-  yield takeEvery("FETCH_GENRES", fetchGenres);
-  yield takeEvery("FETCH_MOVIE_DETAILS", fetchMovieDetails);
-
-}
-
-// Create one store that all components can use
-const storeInstance = createStore(
-  combineReducers({
-    movies,
-    genres,
-    movieDetails,
-  }),
-  applyMiddleware(sagaMiddleware, logger)
-);
-
-// Run the rootSaga
-sagaMiddleware.run(rootSaga);
-
-// Render the React application
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <Provider store={storeInstance}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
-*/
