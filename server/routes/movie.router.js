@@ -1,13 +1,9 @@
-// 💻 Importing required packages 💻
 const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
-/**
- * 🔀 Route to GET all movies 
- * This route handles a GET request to the /api/movie endpoint.
- * It will run a SQL query to get all movies from the database, and then send the result back to the client.
- */
+
+// Route to GET all movies 
 router.get("/", (req, res) => {
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool
@@ -21,11 +17,8 @@ router.get("/", (req, res) => {
     });
 });
 
-/**
- * 🔀 Route to POST a new movie
- * This route handles a POST request to the /api/movie endpoint.
- * It will run two SQL queries: one to insert a new movie into the 'movies' table, and another to insert a genre reference into the 'movies_genres' junction table.
- */
+
+// Route to POST a new movie
 router.post("/", (req, res) => {
   console.log(req.body);
   const insertMovieQuery = `
@@ -61,11 +54,8 @@ router.post("/", (req, res) => {
     });
 });
 
-/**
- * 🔀 Route to GET a specific movie by its id
- * This route handles a GET request to the /api/movie/:id endpoint, where :id is the ID of the movie.
- * It will run a SQL query to get the movie details and all associated genres from the database, and then send the result back to the client.
- */
+
+// Route to GET a specific movie by its id
 router.get("/:id", (req, res) => {
     const movieId = req.params.id;
     const queryText = `
@@ -89,5 +79,5 @@ router.get("/:id", (req, res) => {
       });
   });
 
-// 📤 Exports the router so it can be used by our server 📤
+
 module.exports = router;
