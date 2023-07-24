@@ -2,5 +2,14 @@
 
 .movie-details-container {
     background-color: #5F6D73;
-    padding: 50px 0px;
+    padding: 25px 0px 50px 0px;
+}
+
+.h1-movie-details {
+        font-size: 2.5em;
+        font-family: 'Monoton', cursive;
+        margin: 0;
+        font-weight: 300;
+        padding-bottom: 25px;
+        color: #0A0C0D;
 }

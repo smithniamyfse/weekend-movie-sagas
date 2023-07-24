@@ -22,6 +22,7 @@ function MovieDetails() {
 
   return (
     <main className="movie-details-container">
+        <h1 className="h1-movie-details">{movieDetails.title}</h1>
     <Card sx={{ bgcolor: "#0A0C0D", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{display: "flex", padding: "25px"}}>
         <CardMedia
