@@ -1,48 +1,60 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 function MovieItem({ movie }) {
   const shortDescription = (text, maxLength = 100) => {
-    // If the description is short enough, return the full text
     if (text.length <= maxLength) return text;
-
-    // If the description is too long, trim it and add "Read More..."
     return text.substr(0, maxLength) + "... ";
   };
 
   return (
-    <Card sx={{ display: "flex", maxWidth: 500 }}>
+    <Card sx={{ display: "flex", height: "100%", bgcolor: "#0A0C0D" }}>
       <Link to={`/details/${movie.id}`}>
         <CardMedia
           component="img"
+          sx={{ width: "140px", height: "205px", objectFit: "cover" }}
           image={movie.poster}
           alt={movie.title}
         />
       </Link>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{ flexGrow: 1 }}>
+        <Typography 
+          gutterBottom 
+          variant="h5" 
+          component="div" 
+          align="left"
+          sx={{ color: "#8372A8" }} 
+        >
           {movie.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography 
+          variant="body2" 
+          color="text.secondary" 
+          align="left"
+          sx={{ color: "#AD9BBF" }} 
+        >
           {shortDescription(movie.description)}
-          {movie.description.length > 100 && (
-            <Link to={`/details/${movie.id}`}>
+        </Typography>
+        {movie.description.length > 100 && (
+          <Typography variant="body2" align="left">
+            <Link to={`/details/${movie.id}`} style={{ color: "#C29D1E" }}>
               Read More
             </Link>
-          )}
-        </Typography>
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );
 }
 
 export default MovieItem;
+
+
+
 
 
 

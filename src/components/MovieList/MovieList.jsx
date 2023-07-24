@@ -20,10 +20,10 @@ function MovieList() {
           <Grid
             container
             spacing={2} 
-            columns={{ xs: 4, sm: 8, md: 12 }}
+            columns={{ xs: 4, sm: 6, md: 12 }}
           >
             {movies.map((movie) => (
-              <Grid item xs={6} sm={3} md={3} key={movie.id}> 
+              <Grid item xs={4} sm={4} md={4} key={movie.id}> 
                 <MovieItem movie={movie} /> 
               </Grid>
             ))}
@@ -35,6 +35,8 @@ function MovieList() {
 }
 
 export default MovieList;
+
+
 
 
 
