@@ -16,9 +16,13 @@ function MovieDetails() {
   const movieDetails = useSelector((state) => state.movieDetails);
   const { id } = useParams();
 
+//   useEffect(() => {
+//     dispatch({ type: "FETCH_MOVIE_DETAILS", payload: id });
+//   }, [dispatch, id]);
+
   useEffect(() => {
     dispatch({ type: "FETCH_MOVIE_DETAILS", payload: id });
-  }, [dispatch, id]);
+  }, []);
 
   return (
     <main className="movie-details-container">
