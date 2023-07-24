@@ -18,7 +18,7 @@ function MovieItem({ movie }) {
       <Link to={`/details/${movie.id}`}>
         <CardMedia
           component="img"
-          sx={{ width: "140px", height: "205px", objectFit: "cover" }}
+          sx={{ width: "140px", height: "205px", objectFit: "cover", backgroundColor: "#0A0C0D"}}
           image={movie.poster}
           alt={movie.title}
         />
