@@ -59,8 +59,33 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+    const movieId = req.params.id;
+    const queryText = `
+      SELECT movies.*, genres.name
+      FROM movies
+      JOIN movies_genres ON movies.id = movies_genres.movie_id
+      JOIN genres ON movies_genres.genre_id = genres.id
+      WHERE movies.id = $1;
+    `;
+  
+    pool
+      .query(queryText, [movieId])
+      .then((result) => {
+        const movieDetails = result.rows[0];
+        movieDetails.genres = result.rows.map(row => row.name);
+        res.send(movieDetails);
+      })
+      .catch((err) => {
+        console.log("ERROR: GETting movie details", err);
+        res.sendStatus(500);
+      });
+  });
 
+  module.exports = router;
 
+  
+/*
 router.get("/:id", (req, res) => {
     // Extract the movie ID from the request parameters.
     const movieId = req.params.id;
@@ -101,9 +126,9 @@ router.get("/:id", (req, res) => {
         res.sendStatus(500);
       });
   });
+*/
 
 
-module.exports = router;
   
 /*
 // GET request at the "/:id" endpoint, where ":id" is the movie's ID.

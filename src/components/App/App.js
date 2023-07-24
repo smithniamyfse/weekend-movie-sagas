@@ -1,3 +1,4 @@
+import ReactDOM from "react-dom/client";
 import { HashRouter as Router, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
